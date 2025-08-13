@@ -96,7 +96,10 @@
         <section id="cta" class="section-padding">
             <div class="container cta-content">
                 <h2>Ready to Start Your Journey?</h2>
-                <a href="mailto:youremail@example.com?subject=Lexivium Early Access Request" class="button button-primary">Request Early Access</a>
+                <form name="early-access" method="POST" data-netlify="true" class="cta-form">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="button button-primary">Request Early Access</button>
+                </form>
             </div>
         </section>
     </main>
