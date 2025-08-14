@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lexivium - Craft Your Own Adventure</title>
     <meta name="description" content="The premier platform for writing and reading interactive, branching stories. Create vast worlds or explore adventures where every decision shapes your journey.">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,7 +27,6 @@
                 <a href="#cta" class="button button-primary">Request Early Access</a>
             </div>
         </section>
-
         <section id="features" class="section-padding">
             <div class="container">
                 <div class="features-grid">
@@ -48,7 +45,6 @@
                 </div>
             </div>
         </section>
-
         <section id="who-is-it-for" class="section-padding">
             <div class="container who-grid">
                 <div class="who-column">
@@ -61,7 +57,6 @@
                 </div>
             </div>
         </section>
-        
         <section id="roadmap" class="section-padding">
             <div class="container">
                 <div class="section-header">
@@ -96,10 +91,10 @@
         <section id="cta" class="section-padding">
             <div class="container cta-content">
                 <h2>Ready to Start Your Journey?</h2>
-                    <form name="early-access-v3" method="POST" data-netlify="true" class="cta-form">
-                        <input type="email" name="email" placeholder="Enter your email address" required>
-                        <button type="submit" class="button button-primary">Request Early Access</button>
-                    </form>
+                <form name="early-access" method="POST" data-netlify="true" class="cta-form">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="button button-primary">Request Early Access</button>
+                </form>
             </div>
         </section>
     </main>
@@ -110,5 +105,28 @@
         </div>
     </footer>
 
-</body>
+    <script>
+      const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const myForm = event.target;
+        const formData = new FormData(myForm);
+        
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        })
+          .then(() => {
+            // Redirect to the thank-you page on success
+            window.location.href = "/thank-you.html";
+          })
+          .catch((error) => alert(error));
+      };
+
+      document
+        .querySelector("form[name='early-access']")
+        .addEventListener("submit", handleSubmit);
+    </script>
+    </body>
 </html>
